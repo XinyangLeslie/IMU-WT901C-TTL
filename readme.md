@@ -1,13 +1,11 @@
-reference：
+Reference：
 
 - https://github.com/Ericsii/ros_wit_imu_node
 - https://github.com/ElettraSciComp/witmotion_IMU_ros/tree/ros2
 
 
 
-
-
-### ✅ 第一步：硬件连接（TTL方式）
+###  第一步 硬件连接（TTL方式）
 
 根据你上传的 DatasheetWT901C TTL Datasheet：
 
@@ -22,16 +20,14 @@ reference：
 ls /dev/ttyUSB*
 ```
 
-## Windows版官方插件检查连通性
+### 第二步 Windows版官方插件检查连通性
 
 - [WitMotion New Software.zip](https://drive.google.com/drive/folders/1TLutidDBd_tDg5aTXgjvkz63OVt5_8ZZ)
 - [CH340& CP2102 Driver.zip](https://drive.google.com/file/d/1JidopB42R9EsCzMAYC3Ya9eJ8JbHapRF/view?pli=1)
 
 下载完软件，插上USB后，可以查看电脑中`device manager` 中的 `COM and LPT`， 查看是哪个穿行接口
 
-打开WitMotion软件之后，选择对应的型号，这里是`WT901-TTL`，然后点击 Search devices，最后会跳出一个COMX，选择的是9600 的波特率，最后点击左侧的加号，而不是右侧的加号，注意！！！
-![MygOKr4By5](https://github.com/user-attachments/assets/b0b84958-3d12-43fc-8cbf-b05fabc2154f)
-
+打开WitMotion软件之后，选择对应的型号，这里是`WT901-TTL`，然后点击 Search devices，最后会跳出一个COMX，选择的是9600 的波特率，最后点击左侧的我用红框标注的加号，而不是右侧的加号，注意！！！
 
 ![MygOKr4By5](./resources/images/MygOKr4By5.png)
 
@@ -41,7 +37,7 @@ reference: https://wit-motion.yuque.com/wumwnr/docs/qynnu9?#%20%E3%80%8A%E5%B8%B
 
 
 
-## ROS 2 Humble 安装Witmotion IMU
+### 第三步 ROS 2 Humble 安装Witmotion IMU
 
 参考：
 
@@ -50,7 +46,7 @@ reference: https://wit-motion.yuque.com/wumwnr/docs/qynnu9?#%20%E3%80%8A%E5%B8%B
 
 
 
-按照ros2的安装步骤来：
+按照ros2的安装步骤来，这里只会编译 `witmotion_ros` 包：
 
 ```bash
 cd ~/ros2_ws/src
@@ -65,13 +61,13 @@ If compilation fails, first check the directory `src/witmotion_ros/witmotion-uar
 
 官方的启动代码是：`ros2 launch witmotion_ros wt61c.py`
 
-这里我是：
+这里我是：（因为我的是wt901c版本的imu，因此需要使用启动节点中的这个参数配置文件）
 
 ```bash
 ros2 run witmotion_ros witmotion_ros_node --ros-args --params-file ~/ros2_ws/src/witmotion_ros/config/wt901.yml
 ```
 
-
+或者在遇到问题的时候采用debug方式
 
 ```bash
 RCL_LOG_LEVEL=debug ros2 run witmotion_ros witmotion_ros_node --ros-args --params-file ~/ros2_ws/src/witmotion_ros/config/wt901.yml
@@ -79,13 +75,9 @@ RCL_LOG_LEVEL=debug ros2 run witmotion_ros witmotion_ros_node --ros-args --param
 
 
 
-
-
-
-
 > 注意！！！
 >
-> 参考这个链接，将官方的文档中这个参数`use_native_orientation: True # 311 edit: default -> true (ref: https://github.com/ElettraSciComp/witmotion_IMU_ros/issues/34)`改为 `false`，`ros2 topic echo /imu` 才会出数据，不然一直不输出，为空
+> 参考这个链接，将官方的文档中这个参数`use_native_orientation: True # 311 edit: default -> true (ref: https://github.com/ElettraSciComp/witmotion_IMU_ros/issues/34)`改为 `false`，`ros2 topic echo /imu` 才会出数据，不然一直不输出，为空，我卡在这里两个小时，哈哈，后来发现是一个简单的问题。
 >
 > 参考：https://github.com/ElettraSciComp/witmotion_IMU_ros/issues/42
 >
@@ -100,6 +92,9 @@ https://wiki.ros.org/witmotion_ros/Troubleshooting
 
 
 wt901.yml:
+
+- **port**: ttyUSB0
+- **baud_rate**: 9600 # baud
 
 ```yml
 witmotion:
