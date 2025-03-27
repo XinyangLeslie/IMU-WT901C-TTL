@@ -30,6 +30,8 @@ ls /dev/ttyUSB*
 下载完软件，插上USB后，可以查看电脑中`device manager` 中的 `COM and LPT`， 查看是哪个穿行接口
 
 打开WitMotion软件之后，选择对应的型号，这里是`WT901-TTL`，然后点击 Search devices，最后会跳出一个COMX，选择的是9600 的波特率，最后点击左侧的加号，而不是右侧的加号，注意！！！
+![MygOKr4By5](https://github.com/user-attachments/assets/b0b84958-3d12-43fc-8cbf-b05fabc2154f)
+
 
 ![MygOKr4By5](./resources/images/MygOKr4By5.png)
 
