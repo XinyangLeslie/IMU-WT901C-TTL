@@ -29,6 +29,7 @@ ls /dev/ttyUSB*
 
 打开WitMotion软件之后，选择对应的型号，这里是`WT901-TTL`，然后点击 Search devices，最后会跳出一个COMX，选择的是9600 的波特率，最后点击左侧的我用红框标注的加号，而不是右侧的加号，注意！！！
 
+![MygOKr4By5](https://github.com/user-attachments/assets/b0b84958-3d12-43fc-8cbf-b05fabc2154f)
 ![MygOKr4By5](./resources/images/MygOKr4By5.png)
 
 最后就会有数据显示了
