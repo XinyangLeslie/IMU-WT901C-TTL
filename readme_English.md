@@ -31,6 +31,7 @@ After downloading the software and plugging in the USB, you can check the `COM a
 
 After opening the WitMotion software, select the corresponding model, here is `WT901-TTL`, then click Search devices, finally a COMX will pop up, select the baud rate of 9600, and finally click on the left side of the red box I marked with a plus sign, instead of the right side of the plus sign, pay attention!
 
+![MygOKr4By5](https://github.com/user-attachments/assets/b0b84958-3d12-43fc-8cbf-b05fabc2154f)
 ![MygOKr4By5](./resources/images/MygOKr4By5.png)
 
 Finally, there will be data to show
